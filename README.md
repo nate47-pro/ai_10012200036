@@ -1,5 +1,9 @@
 # ACity RAG Assistant
 
+# Nathaniel Adam
+# 10012200036git remote add origin https://github.com/<your-username>/<repo-name>.git
+
+
 **Retrieval-Augmented Generation Chatbot — Academic City University Ghana**
 
 > Built from scratch — no LangChain, no LlamaIndex, no pre-built RAG pipelines.  
@@ -59,12 +63,6 @@ Place in `data/`:
 
 Create a key at [Groq Console](https://console.groq.com/).
 
-**Linux / macOS**
-
-```bash
-export GROQ_API_KEY=gsk_your_key_here
-```
-
 **Windows (CMD)**
 
 ```cmd
@@ -74,7 +72,7 @@ set GROQ_API_KEY=gsk_your_key_here
 **Windows (PowerShell)**
 
 ```powershell
-$env:GROQ_API_KEY="gsk_your_key_here"
+$env:GROQ_API_KEY=gsk_****************
 ```
 
 ### 4. Run the app
@@ -221,17 +219,6 @@ Templates include **Hallucination-Controlled**, **Chain-of-Thought**, and **Basi
 
 ---
 
-## Assignment checklist
-
-- [x] Part A: Data cleaning, two chunking strategies, justification  
-- [x] Part B: Custom embedding, FAISS, top-K, scores, hybrid search  
-- [x] Part C: Three prompt templates, context management, experiments  
-- [x] Part D: Full pipeline, logging, chunks/scores/prompt in UI  
-- [x] Part E: Adversarial queries, RAG vs LLM, failure cases  
-- [x] Part F: Architecture + justification  
-- [x] Part G: Feedback loop  
-- [x] Final: Streamlit UI, documentation, experiment log  
 
 ---
-
 *Stack: Python, sentence-transformers, FAISS, Streamlit, Groq (OpenAI-compatible HTTP API via `requests`).*
