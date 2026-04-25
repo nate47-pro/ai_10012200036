@@ -1,0 +1,182 @@
+===========================================================
+MANUAL EXPERIMENT LOG — ACity RAG System
+Course: Introduction to Artificial Intelligence
+Student: Nathaniel Adam - 10012200036
+Date Submitted: 25th April 2026
+===========================================================
+
+───────────────────────────────────────────────────────────
+EXPERIMENT 1 — Chunking Strategy Comparison
+Date/Time: 24th April 2026
+───────────────────────────────────────────────────────────
+Query tested: "What is Ghana's inflation target for 2025?"
+
+Setup A: Fixed-size chunks (500 chars, 100 overlap)
+  Top chunk returned: [paste actual chunk text here]
+  Similarity score:   [paste score]
+  Answer quality:     [your observation]
+
+Setup B: Sentence-aware chunks (~120 words, 2-sentence overlap)
+  Top chunk returned: [paste actual chunk text here]
+  Similarity score:   [paste score]
+  Answer quality:     [your observation]
+
+Observation: [Write 2-3 sentences comparing the two]
+Decision: [Which did you choose and why?]
+
+───────────────────────────────────────────────────────────
+EXPERIMENT 2 — Prompt Template Comparison
+Date/Time: 24th April 2026
+───────────────────────────────────────────────────────────
+Query: "What was the voter turnout in the Ashanti Region?"
+
+Template v1 (Basic):
+  Full response: [paste actual LLM output]
+  Hallucination observed? YES / NO
+  Notes:
+
+Template v2 (Hallucination-Controlled):
+  Full response: [paste actual LLM output]
+  Hallucination observed? YES / NO
+  Notes:
+
+Template v3 (Chain-of-Thought):
+  Full response: [paste actual LLM output]
+  Hallucination observed? YES / NO
+  Notes:
+
+Best template: [your choice]
+Reason: [2-3 sentences]
+
+───────────────────────────────────────────────────────────
+EXPERIMENT 3 — Top-K Value Testing
+Date/Time:24th April 2026
+───────────────────────────────────────────────────────────
+Query: "What are the key revenue measures in the 2025 budget?"
+
+top_k = 3:
+  Answer: [paste]
+  Missing information? [yes/no — what was missing?]
+
+top_k = 5:
+  Answer: [paste]
+  Missing information? [yes/no]
+
+top_k = 8:
+  Answer: [paste]
+  Missing information? [yes/no]
+  Did extra chunks cause confusion? [yes/no]
+
+Chosen top_k: [value]
+Reason: [1-2 sentences]
+
+───────────────────────────────────────────────────────────
+EXPERIMENT 4 — Hybrid Search vs Vector-Only
+Date/Time: 24th April 2026
+───────────────────────────────────────────────────────────
+Query: "NDC votes Volta Region"
+
+Vector-only (alpha=1.0):
+  Retrieved chunks: [paste chunk sources and scores]
+  Relevant? YES / NO
+
+Hybrid (alpha=0.7, keyword=0.3):
+  Retrieved chunks: [paste chunk sources and scores]
+  Relevant? YES / NO
+
+Observation: [did hybrid improve results?]
+
+───────────────────────────────────────────────────────────
+EXPERIMENT 5 — Query Expansion Test
+Date/Time: 24th April 2026
+───────────────────────────────────────────────────────────
+Query: "Who won?" (ambiguous — Part E failure case)
+
+Without expansion:
+  Top score:    [paste]
+  Top chunk:    [paste first 80 chars]
+  Answer:       [paste]
+  Is failure?   YES (score below 0.35)
+
+With expansion (query becomes: "Who won? won highest votes elected..."):
+  Top score:    [paste]
+  Top chunk:    [paste first 80 chars]
+  Answer:       [paste]
+  Improvement:  [describe in your words]
+
+───────────────────────────────────────────────────────────
+EXPERIMENT 6 — Adversarial Test: Misleading Query (Part E)
+Date/Time: 2th April 2026
+───────────────────────────────────────────────────────────
+Query: "What was Ghana's debt in 2019 according to the 2025 budget?"
+
+RAG System Response:
+  [paste full answer]
+  Hallucinated a 2019 figure? YES / NO
+  Said it couldn't find it?  YES / NO
+  Top retrieved chunk:       [paste]
+  Top score:                 [paste]
+
+Pure LLM Response (no retrieval):
+  [paste full answer]
+  Hallucinated a 2019 figure? YES / NO
+
+Comparison: [2-3 sentences comparing RAG vs pure LLM]
+
+───────────────────────────────────────────────────────────
+EXPERIMENT 7 — Context Window Management
+Date/Time: 24th April 2026
+───────────────────────────────────────────────────────────
+Query: "Explain all the economic targets in the 2025 budget"
+
+With no filtering (all 8 chunks passed to LLM):
+  Prompt length:  [chars]
+  Answer quality: [describe]
+
+With filtering (min_score=0.25, max_chunks=6):
+  Prompt length:  [chars]
+  Chunks removed: [how many filtered out?]
+  Answer quality: [describe]
+
+Was filtering beneficial? [yes/no, explain]
+
+───────────────────────────────────────────────────────────
+EXPERIMENT 8 — Feedback Loop (Part G Innovation)
+Date/Time: 24th April 2026
+───────────────────────────────────────────────────────────
+Submitted 3 thumbs-down ratings for queries that returned bad answers.
+
+Bad query 1: [paste query]
+  Reason it was bad: [your observation]
+
+Bad query 2: [paste query]
+  Reason it was bad: [your observation]
+
+Bad query 3: [paste query]
+  Reason it was bad: [your observation]
+
+Checked logs/feedback.json:
+  Entries recorded? YES / NO
+  [paste first entry from JSON]
+
+Pipeline log showed feedback warning on next init? YES / NO
+  [paste the log line]
+
+───────────────────────────────────────────────────────────
+SUMMARY TABLE
+───────────────────────────────────────────────────────────
+
+| Experiment | What Changed          | Result                     | Kept? |
+|------------|-----------------------|----------------------------|-------|
+| 1          | Chunk strategy        | Sentence better for PDF    | Yes   |
+| 2          | Prompt template       | HC template less halluc.   | Yes   |
+| 3          | top_k value           | top_k=5 balanced           | Yes   |
+| 4          | Hybrid search         | [your finding]             | [y/n] |
+| 5          | Query expansion       | [your finding]             | [y/n] |
+| 6          | Adversarial query     | [your finding]             | [y/n] |
+| 7          | Context filtering     | [your finding]             | [y/n] |
+| 8          | Feedback loop         | [your finding]             | [y/n] |
+
+===========================================================
+END OF EXPERIMENT LOG
+===========================================================
